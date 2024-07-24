@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todo list</title>
+    <style>
+        body{
+            background-color: gold;
+        }
+        .maindiv{
+
+            background-color: cyan;
+            padding-left: 295px;
+            padding-right: 269px;
+        }
+        button{
+            display: flex;
+            color: white;
+            background-color: navy;
+            padding: auto;
+            margin-left: 20px;
+            text-align: center;
+        }
+
+        *{
+            padding: 10px;
+        }
+        .adbnt{
+
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    
+    <center>
+    <div class="maindiv">
+        <center><h1>Student Data</h1></center>
+        <div class="inputdiv">
+    <input type="text" id="usertext">
+</div>
+<div class="btndiv">
+    <button class="adbnt" onclick="addtodo()">Add Todo</button>
+</div>
+<div class="uldiv">
+    <ol id="show"></ol>
+</div>
+
+</div>
+</center>
+<script>
+    function addtodo(){
+        var usertext = document.querySelector('#usertext')
+        var li = document.createElement('li') 
+        var editbtn = document.createElement('button') 
+        var delbtn = document.createElement('button')
+        editbtn.innerText= "Edit" 
+        delbtn.innerText= "Delete"
+
+        delbtn.setAttribute('onclick','delbtn()')
+        editbtn.setAttribute('onclick','editbtn()')
+        li.append(usertext.value) 
+        li.appendChild(editbtn) 
+        li.appendChild(delbtn) 
+        show.prepend(li)
+        usertext.value='' 
+    }
+    function delbtn(){
+        event.target.parentNode.remove()
+    }
+    function editbtn(){
+      var oldText = event.target.parentNode.firstChild.nodeValue 
+      var editText = prompt('Enter Your Value Update',oldText)
+      event.target.parentNode.firstChild.nodeValue = editText
+        
+    
+    }
+</script>
+    <!-- <script src="app.js"></script> -->
+</body>
+</html>
